@@ -12,7 +12,12 @@ from visualizations import *
 import cmdstanpy
 from cmdstanpy import CmdStanModel
 
-from __init__ import __version__
+# from __init__ import __version__
+import authentication_streamlit
+
+authentication_streamlit.check_authentication(
+    "Denied access. Please log in to https://ceerma.org"
+)
 
 image_ufpe = Image.open('./src/logo.png')
 image_ceerma = Image.open('./src/favicon.png')
@@ -21,13 +26,13 @@ st.set_page_config(page_title="BALT",
                    page_icon=image_ceerma, layout="wide",
                    initial_sidebar_state="expanded")
 
-version_info = f"Version {__version__}"
-st.sidebar.markdown(
-        f"""
-        <div style="display:table;margin-top:-80px">{version_info}</div>
-        """,
-        unsafe_allow_html=True,
-)
+# version_info = f"Version {__version__}"
+# st.sidebar.markdown(
+#         f"""
+#         <div style="display:table;margin-top:-80px">{version_info}</div>
+#         """,
+#         unsafe_allow_html=True,
+# )
 
 st.sidebar.image(image_ufpe)
 
